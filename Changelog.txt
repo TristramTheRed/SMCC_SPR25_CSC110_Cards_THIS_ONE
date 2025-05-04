@@ -124,3 +124,18 @@ Blackjack
 				// Added if-else if-else to updateButtonStates()
 				// Added updateButtonStates();
 				// Added updateBalanceDisplay();
+				
+	BUILD 03 -> BUILD 03-1
+			
+	Fixed an issue where the Bet Panel 		
+			
+		SortCards	
+			ADDED
+			
+				// Bet Components
+				// Set Bet Panel
+		
+			CHANGED
+				
+				// g.drawString("Balance: $" + game.getCurrentBalance(), boardWidth - 250, 30); -> g.drawString("Balance: $" + game.getPlayerBalance(), boardWidth - 250, 30);
+

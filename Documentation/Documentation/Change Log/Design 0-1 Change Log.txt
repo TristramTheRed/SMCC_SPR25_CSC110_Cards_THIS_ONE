@@ -1,0 +1,46 @@
+Changelog – Design 0-1
+	•Document Created, objectives defined – TB 4/27
+	•Project Outline Started – TB 4/28
+	•Pseudo-Code Planning and Technical Writing drafts started – TB 4/28
+	•Completed Technical Writing Draft (Mechanics only) – TB 4/28
+	•Project objectives defined, Blackjack objectives defined
+	•Created Pseudo-Code Design Draft – TB 4/28
+	•Halted Pseudo-Code Design Draft – TB 4/29
+		oTime Constraints
+	•Made significant changes to Pseudo-Code Planning Draft – TB 4/29
+	•Removed now obsolete Pseudo-Code Planning Draft Images with intent to update
+	•Resumed Pseudo-Code Design Draft – TB 4/29
+		Time Constraints eased
+		oHalted Pseudo-Code Design Draft – TB 4/30
+		User error, should have made the Game Flows for User and Code first
+	•Game Flow Summary - User Experience started – TB 4/30
+	•Game Flow Summary - User Experience completed – TB 4/30\
+	•Elements of Code Design and UI Design notes added to relevant areas of Game Flow Summary - User Experience Draft – TB 4/30
+	•Programming Started – TB 4/30
+		oStarted Class Definitions
+	•Refined Design Plan, cut several planned features to be used as future feature implementation – TB 4/30
+	•Readded certain elements and features removed during immediately previous action – TB 4/30
+	•Created Developmental Plan and Action Tracker for all required and optional Project Requirements defined in Rubric – 4/30
+	•Class Inheritance Flow Chart (Doubles as Developmental Plan for minimum Class definitions) started 5/1
+	•Class Inheritance Flow Chart Completed – 5/1
+	•Updated Game Flow Summary – User Experience to accurately reflect design changes – TB 5/1
+	•Queried Claude to provide non-coded suggestions about specific Packages, Interfaces, and Objects that could be applicable to the project
+	•Created two Hand-Written List/Flow Chart hybrids for desired applicable suggestions from Claude returned as the result of the queries listed above – TB 4/30
+	•Paused development to learn Swing – TB 5/1
+	•Created a list of parameters to pass to Claude.ai to facilitate expediency without compromising academic integrity– TB 5/2
+	•Redesigned certain classes to be nested private to reduce number of class files – TB 5/2
+		oPlayer moved to Table
+		oDealer moved to Table
+		oSortCards renamed GamesBlackJack and moved to Games – TB 5/2
+		All future games will be implemented in the same way – TB 5/2
+	
+•COMPLETELY dumped the code base and started again from just Card Starter files – TB 5/3
+	oI was trying to start from what I was considering a “Foundation”, but was really getting it super wrong and starting from Top-Level. That was several days of very arduous and complicated bullshit that I couldn’t even test because it was all in shambles. 
+	oNow I’m going to start with the base and poke it until it works, then add a little of what I came up with in the design and test it and repeat the process. In the future, remind me to never, EVER, not take immediate and full command in a group. I tried to politely wrangle everyone and lost 20 days for it. This sucks, even though I am learning a whole lot. 
+	•Fixed bugs in Card Starter files until compiled as stand-alone – TB 5/4	
+	oUploaded to GitHub as Blackjack01
+	•Added Blackjack-specific logic and actions, Game State tracking, Scoring and Winning conditions – 5/4 TB
+	oUploaded to GitHub as Blackjack02
+	•Turned off OneDrive synchronization, as using two different machines while working was causing version control issues that I had not yet noticed – TB 5/4
+	•Further updates found in Change Log
+	•Clean-up of documentation and updates to reflect process between predesign and final build, in regards to the thought process behind re-design

@@ -1,4 +1,6 @@
 //Tristan Biggs 
+
+//None of this changed
 public class Card implements Comparable<Card> {
 
     String rank;
@@ -8,7 +10,7 @@ public class Card implements Comparable<Card> {
         this.rank = rank;
         this.suit = suit;
     }
-
+//I'm not really sure which override is doing the thing, to be honest I added the other one for the requirement and it just so happened to not break the cardImg 
     @Override
     public String toString() {
         return rank + "-" + suit;

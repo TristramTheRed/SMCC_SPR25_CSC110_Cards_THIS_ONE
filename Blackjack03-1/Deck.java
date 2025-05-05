@@ -1,4 +1,6 @@
 // Tristan Biggs
+
+//More or less the same
 import java.util.Random;
 
 public class Deck {
@@ -25,7 +27,7 @@ public class Deck {
                 deck[pos++] = card;
             }
         }
-
+// Console was cluttered
         // System.out.println("BUILD DECK:");
         // for (Card card : deck) {
             // System.out.println(card);
@@ -42,7 +44,8 @@ public class Deck {
             int j = random.nextInt(deck.length);
             exchange(i, j);
         }
-
+    }
+// Console was cluttered
         // System.out.println("AFTER SHUFFLE");
         // for (Card card : deck) {
             // System.out.println(card);

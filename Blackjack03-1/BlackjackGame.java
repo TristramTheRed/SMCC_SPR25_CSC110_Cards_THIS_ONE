@@ -19,12 +19,13 @@ public class BlackjackGame {
         private int playerBalance = 1000; // Start with 1000
         private int currentBet = 0;
         private int minimumBet = 10;
-
+    //Game constructor
         public BlackjackGame() {
             deck = new Deck(52);
             playerHand = new Hand(21);
             dealerHand = new Hand(21);
         }
+
         public boolean placeBet(int amount) {
         // Validate bet amount
             if (amount < minimumBet) {
@@ -78,6 +79,7 @@ public class BlackjackGame {
                 }
             }
         }
+        // Method for player to Stay
         public void playerStay() {
             if (gameInProgess && playerTurn) {
                 playerTurn = false;
@@ -85,10 +87,12 @@ public class BlackjackGame {
                 dealerPlay();
             }
         }
+        //Method for Dealer game logic
         private void dealerPlay() {
         // Dealer must hit on a 16 or less, stay on 17 or more
             while (dealerTurn) {
                 int dealerValue = calculateHandValue(dealerHand);
+        // follows conventional Blackjack Rules, Deal must hit on 16 or below and 17 or higher               
                 if (dealerValue < 17) {
                     dealerHand.addCard(deck.dealCard());
         // Check for Bust
@@ -106,6 +110,7 @@ public class BlackjackGame {
                 }
             }
         }
+        //Evaluates different win conditions
         private void determineWinner() {
             int playerValue = calculateHandValue(playerHand);
             int dealerValue = calculateHandValue(dealerHand);
@@ -127,6 +132,7 @@ public class BlackjackGame {
             processWinnings(playerWins);
             gameInProgess = false;
         } 
+        //evaluate the kind of win for payout
         private void processWinnings(boolean playerWins) {
             if (playerWins) {
         // Check for Blackjack (21 in 2)
@@ -141,6 +147,7 @@ public class BlackjackGame {
         //if the dealer wins, player loses (chips are already gone)
             currentBet = 0;
         }
+        //This is what evaluates the score for it to exist in order to be displayed or evaluated
         public int calculateHandValue(Hand hand) {
             int value = 0;
             int aceCount = 0;
@@ -159,6 +166,7 @@ public class BlackjackGame {
             }
             return value;
         }
+    //Getters and evaluations of Game State
         public Hand getPlayerHand(){
             return playerHand;
         }

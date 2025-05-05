@@ -87,7 +87,6 @@ public class SortCards {
                     }
                     g.setFont(BlackAdder.deriveFont(Font.PLAIN, 28f));
                     g.setColor(Color.WHITE);
-// g.drawString("Balance: $" + game.getCurrentBalance(), boardWidth - 250, 30); -> g.drawString("Balance: $" + game.getPlayerBalance(), boardWidth - 250, 30);
                     g.drawString("Balance: $" + game.getPlayerBalance(), boardWidth - 250, 30);
                     if (game.getCurrentBet() > 0) {
                         g.drawString("Current Bet: $" + game.getCurrentBet(), boardWidth - 250, 60);
@@ -141,7 +140,7 @@ public class SortCards {
                 }
             }
         };
-    // Initialize betting components
+// Initialize betting components
         betPanel = new JPanel();
         betTextField = new JTextField(5);
         betButton = new JButton("Place Bet");
@@ -178,6 +177,7 @@ public class SortCards {
                 JOptionPane.WARNING_MESSAGE);
             }
         });
+    // Set up Buttons
         ButtonPanel = new JPanel();
         HitButton = new JButton("Hit"); 
         StayButton = new JButton("Stay"); 
@@ -230,9 +230,11 @@ public class SortCards {
     });
         NewGameButton.setEnabled(false);
 }
+// updates Balance
     private void updateBalanceDisplay() {
         balanceLabel.setText("Balance: $" + game.getPlayerBalance() + " Current Bet: $" + game.getCurrentBet());
     }
+    // Evaluates whether buttons should be on or off
     private void updateButtonStates() {
         HitButton.setEnabled(game.isPlayerTurn());
         StayButton.setEnabled(game.isPlayerTurn());

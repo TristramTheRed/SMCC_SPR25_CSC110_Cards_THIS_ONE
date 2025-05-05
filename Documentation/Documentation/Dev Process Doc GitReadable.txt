@@ -1,5 +1,3 @@
-This Document was created as an alternative copy to the Project Documentation Main file, as docx is hoity-toiy princess who can't just be cool with normal ass chars. 
-
 Tristan Biggs
 Doctor Michael Findler
 CSC110AB
@@ -27,19 +25,22 @@ Design
 Project Objectives
 REQUIRED
 1.	Description of the problem/goal/task your project is intended to accomplish. (1 point)
+The Technical Writing Draft makes for an excellent description of the required solution. 
 
 2.	Make a plan for the project. Give the list of the steps your program takes. This will be your plan. Think of it as a way to write out what you need to tell the computer to do. This is the most important part of programming. [Plan should be more detailed than original plan.] (1 point)
- 		
+ 	Design 0-1
+
 3.	I need to see your working project coded in Java. Must run in VS Code. (1 point)
 Presentation
 
 4.	Test your program. Include test cases you used to test your project, so someone else could do the same. (1 point)
+Do not have documentation available, extended testing undone
 
 5.	Include Documentation. Documentation explains the specific features of the project informs how one can work with it, helps on to understand the project's functionality. Be sure to add comments throughout your code. This helps you and anyone that looks at your code understand your thought process for doing what you did. Think of documentation as a user manual and system manual combined. (1 point)
-
+In Progress
 
 6.	Include future project enhancements. What changes would you make to your program next in the future. What expectations of uses do you foresee? How would these expectations determine your next updates? (1 point)
-Design Documentation – Highlight unimplemented features as future features
+Casino 0-0-1, Design 0-1, and Research Lists
 7.	Develop a presentation (5 minute maximum) that could be used to explain your project to others. (1 point)
 Complete
 8.	Record a presentation (5 minute maximum) that explains your project. (1 point)
@@ -49,24 +50,23 @@ Complete
 All Swing elements -> SortCards.java
 MINIMUM 6 FROM THE FOLLOWING
 1.	Write Java program(s) that process user input. (1 point)
-Private Static String UserName = GameArgs.nextLine;
-Several Swing ActionListeners attached to buttons that are to be used by Player to pass input to program
+JTextField 
 2.	Write Java program(s) that display formatted output. (1 point)
-No Thank You
+toString (Technically? Isn’t it a Formatter?)
 3.	Write Java program(s) that utilize branching control structures. (1 point)
 Idk how you make any Java program without them tbh
 4.	Write Java program(s) that utilize loops. (1 point)
-Yuuuuup
+There are multiple for loops through-out
 5.	Develop Java program(s) that use various data type 
-Yarp
+Definitely.
 6.	Develop Java program(s) that use advanced features such as arrays, ArrayList, Queues, or Stacks... (1 point) [Can be one of these or multiple]
-Yuuuuuuuuup
+Considering how ArrayList is unused in the final build, I’m going to guess not. Which is wild, considering my system to be able to continuously validate deck and hand integrity. I guess that’s not as useful as one might think.
 7.	Develop Java program(s) that use advanced features defining and using methods. (1 point)
-Hmmm I planned on it but I don’t think any of those features are actually going to be implimented
+I would be shocked if I didn’t have at least one thing that counted, but I suppose all things considered I didn’t actually get very far. 
 8.	Develop Java program(s) that use Object-Oriented programming (OOP) for custom classes.(1 point)
-HAAAh, man. Yea I did that. Table, Bank, Dealer, Player, Deck, Hand.
+Oh, for sure. BlackjackGame is the driver here.
 9.	Develop Java program(s) that use Exception Handling. (1 point)
-Yahar
+I read that it would be a good idea to have one attached, but you already had one in there. I just never ended up needing it, all my errors were coming from in the guts if it wasn’t something silly (Like not testing BUILD03 before I committed it. Embarrassing.) 
 Blackjack
 Assignments
 Tristan Biggs 
@@ -94,14 +94,33 @@ Comments on Design 0-1 (original design)
 
 The approach the first design, referred to as  Design 0-1 only in name as the code was retired to serve as future implementations, was slow, methodical, and meticulously detail oriented (when I wasn’t raving mad from lack of sleep). 
 
-What I failed to realize was that no matter what pace I had chose that I had made a critical error in my Development Plan – I started with the top level classes and had intended on ENDING with card being the last non-UI or main class.
+What I failed to realize was that no matter what pace I had chose that I had made a critical error in my Development Plan – I started with the top level classes and had intended on ENDING with card being the last non-UI or main class. 
 
  I am certain that had I made the decision to begin without my group, I would have no issues producing the originally intended program. 
 
 In the original design, 11 classes were present. These classes can now be found in the code base under Future\Casino 0-0-0-1\. In the encapsulation update that was planned before Design 0-1 was scrapped, it was to be reduced to potentially 7, but during that process there were many issues with incorrect inheritance as I had not actually realized yet that (and am actually still not quite sure about) older versions of Java being still in use enough to be the top result on something like google when searching for information about methods and classes. This added another layer of difficulty, as in my carelessness I assumed it would work out alright as it had for every other assignment. So, when I was unable to reverse engineer the supplies swing code to expand and apply for the purposes of having the ability to run any, ANY kind of test, I realized it was time to swallow my pride. 
 
-At this point, I had made the choice to go back and to again the right way. 
-I started with the card start that had been provided by Dr. Findler
+CARD STARTER -> BUILD 01
+At this point, I had made the choice to go back and do it again the right way. I started off with the ACTUAL foundation, which was essentially ensuring that Cards operated as intended (Since there is literally no point without it). However, it wasn’t so much that Cards was non-functioning as it was that the Swing Components were not being handled correctly.
+The first task was to get the card start that had been provided by Dr. Findler to compile.
+•	In App.java, SwingUtilities was added to accommodate for invokeLater 
+
+ 
+•	Which turns out is a critical step in designing Swing Components, as it is of the utmost importance that it be handled by the Event Dispatcher Thread to avoid thread interference or similar issues; it is to be handled concurrently on a single thread – this was added to the main method of App.java
+
+ 
+
+•	A toString override was created to handle card names, which had to be exactly as such in order to get the appropriate cardImg (I didn’t even notice I never got the back of the card until after I had presented, unfortunately). I tried quite a bit to make anything fancy work like enums for names so that I could also store the point values, but it was uncooperative. This was added to Hand, so that the Cards 
+ 
+•	These were moved down into SortCards() for similar reasons as the addition of invokeLater – They need to be available to the view layer (Mainly for the Cards they both contain, but Hand is on-screen as well)
+ 
+•	Finally, the Frame and Panel were moved to the top of SortCards to be available for the rest of the swing components to build off of. I was not fond of how long it took me to realize that they needed to be in a specific order, and even longer to understand the difference between all the parts. It wasn’t until I was able to see them in action after compiling this that it sort of, SORT OF, started to make sense. 
+•	
+ 
+•	I also initially wanted to have all variables fit the case convention I prefer for Java, which begins with a Capital for nouns and a lower case for Verbs. I’m very extra, and I’ll have to get over it soon. No one seems to like it.
+BUILD01-BUILD02
+
+
 Technical Writing 
 STARTED 4/28 TB
 COMPLETED 4/28 TB
@@ -294,3 +313,4 @@ ROUND END (CLEANUP)
 Reference	
 (1)	https://www.wikihow.com/Play-Blackjack
 (2) https://docs.oracle.com/en/java/javase/21/docs/api/index.html
+

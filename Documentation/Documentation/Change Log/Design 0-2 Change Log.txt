@@ -4,129 +4,164 @@ Blackjack
 
 5/4
 
-BUILD 01 -> BUILD 02
+	BUILD 01 -> BUILD 02
 
-BlackjackGame.java 
+		BlackjackGame.java 
+			
+			ADDED
+				// Added import java.util.ArrayList; import java.util.List; (they are not needed yet)
+				// Added Game Components Deck deck, Hand playerHand, Hand dealerHand,
+				// Added Game States boolean gameInProgess, boolean playerTurn, boolean dealerTurn, Boolean gameOver
+				// Added BlackjackGame();
+				// Added playerHit();
+				// Added playerStay();
+				// Added dealerPlay();
+				// Added determineWinner();
+				// Added calculateHandValue(Hand hand);    
+				// Added Hand getPlayerHand();
+				// Added Hand getDealerHand();
+				// Added boolean isGameInProgress(); 
+				// Added boolean isPlayerTurn();
+				// Added boolean isDealerTurn();
+				// Added boolean isGameOver();
 
-// Added import java.util.ArrayList; import java.util.List; (they are not needed yet)
-// Added Game Components Deck deck, Hand playerHand, Hand dealerHand,
-// Added Game States boolean gameInProgess, boolean playerTurn, boolean dealerTurn, Boolean gameOver
-// Added BlackjackGame();
-// Added playerHit();
-// Added playerStay();
-// Added dealerPlay();
-// Added determineWinner();
-// Added calculateHandValue(Hand hand);    
-// Added Hand getPlayerHand();
-// Added Hand getDealerHand();
-// Added boolean isGameInProgress(); 
-// Added boolean isPlayerTurn();
-// Added boolean isDealerTurn();
-// Added boolean isGameOver();
+		SortCards.java
+
+			ADDED
+				// Added Font BlackAdder;
+				// Added BlackjackGame game; 
+				// Added JButton HitButton; 
+				// Added  JButton StayButton; 
+				// Added JButton NewGameButton; 
+				// Added Code to bring in custom Font
+				// Added Font loader
+				// Added new BlackjackGame(); 
+				// Added Draw background
+				// Added  Draw player's hand label 
+				// Added Draw dealer's hand label 
+				// Added Draw dealer's hand 
+				// Added Draw game status
+				// Added JButton HitButton
+				// Added JButton StayButton
+				// Added JButton NewGameButton
+				// Added action listeners to HitButton, StayButton, NewGameButton
+				// Added updateButtonStates()
+				// Added GamePanel.repaint();
+
+			REMOVED
+				Deck Deck;
+				Hand Hand;
+				JButton SortButton; 
+				JButton ShuffleHandButton;
+				JButton ShuffleDeckButton;
+				Deck = new Deck(52);
+				Hand = new Hand(13);
+				JPanel
+				JButton SortButton = new JButton("Deal");
+				JButton ShuffleHandButton = new JButton("Shuffle Hand");
+				JButton ShuffleDeckButton = new JButton("Shuffle Deck");
+				GamePanel.setBackground(new Color(53, 101, 77));
+				SortButton.setFocusable(false);
+				ButtonPanel.add(SortButton);
+				ButtonPanel.add(SortButton);
+				ButtonPanel.add(ShuffleHandButton);
+				ButtonPanel.add(ShuffleHandButton);
+				ButtonPanel.add(ShuffleDeckButton);
+				SortButton.addActionListener((ActionEvent e) -> {
+				System.out.println("sortButton.() needs to be edited");
+				dealHand();
+				GamePanel.repaint();
+				ShuffleHandButton.addActionListener(e -> {shuffle(Hand);});
+				Deck.buildDeck();
+				shuffle(Deck); // used for debugging
+				dealHand();
+				shuffle(Hand); // used for debugging
+				System.out.println("PLAYER: ");
+				System.out.println(Hand);
+				public void dealHand() {for (int i = 0; i < 13; i++) {Card card = Deck.dealCard();Hand.addCard(card);GamePanel.repaint();}
+				public void shuffle(Deck d) {d.shuffle();GamePanel.repaint();}
+				ShuffleDeckButton.addActionListener(e -> {Hand = null; Hand = new Hand(13); shuffle(Deck);dealHand();});
+
+			CHANGED
+				int cardHeight = 200; // Changed 220 -> 200
+				// Changed new Font("Arial", Font.BOLD, 20 -> BlackAdder.deriveFont(Font.PLAIN, 28f
+				for (int i = 0; i < playerHand.last; i++) // Changed for (int i = 0; i < Hand.last; i++)
+				Card card = playerHand.getCard(i); // Changed Card card = Hand.getCard(i);
+				g.setFont(BlackAdder.deriveFont(Font.PLAIN, 28f)); //Changed new Font("Arial", Font.BOLD, 24 -> BlackAdder.deriveFont(Font.PLAIN, 28f
+				g.drawString("Press 'New Game' to Start", 600, 75); // Changed y:250 -> 75
+				int boardHeight = 700; // Changed 600 -> 700
+				g.setFont(BlackAdder.deriveFont(Font.PLAIN, 28f)); //Changed new Font("Arial", Font.BOLD, 24 -> BlackAdder.deriveFont(Font.PLAIN, 28f
+				g.drawString("Press 'New Game' to Start", 600, 75); // Changed y:250 -> 75
+
+	BUILD 02 -> BUILD 03
+
+	Cleaned up Change Log Entries
+
+		BlackjackGame
+			ADDED
+				// Added Betting Components playerBalance, currentBet, minimumBet
+				// Added placeBet(int amount);
+				// Added if statement to startNewGame();
+				// Added processWinnings(true); to dealerPlay();
+				// Added boolean playerWins to determineWinner(); // Added playerWins = true;, playerWins = false;, 
+				// Added return bet to player on Push to determineWinner();
+				// Added processWinnings(playerWins) 
+				// Added processWinnings(boolean playerWins)
+				// Added getPlayerBalance();
+				// Added getCurrentBet();
+				// Added getMinimumBet();
+				// Added resetBet();
+
+		SortCards
+			ADDED
+				// Added betPanel, betTextField, betButton, balanceLabel 
+				// Added visibility to betting information
+				// Added JPanel betPanel, JTextField betTextField , JButton betButton, JLabel balanceLabel
+				// Added JPanel betPanel, JTextField betTextField , JButton betButton, JLabel balanceLabel
+				// Added if-else Statment to NewGameButton ActionListener
+				// Added Disable NewGameButton until a bet is placed
+				// Added updateBalanceDisplay()
+				// Added if-else if-else to updateButtonStates()
+				// Added updateButtonStates();
+				// Added updateBalanceDisplay();
+				
+	BUILD 03 -> BUILD 03-1 FINAL
+			
+	Fixed an issue where the Bet Panel 		
+			
+		SortCards	
+			ADDED
+			
+				// Bet Components
+				// Set Bet Panel
+		
+			CHANGED
+				
+				// g.drawString("Balance: $" + game.getCurrentBalance(), boardWidth - 250, 30); -> g.drawString("Balance: $" + game.getPlayerBalance(), boardWidth - 250, 30);
 
 
 
-SortCards.java
+!! Inaccurate to final build!!
+Consider these planned implementations
+	BUILD 04 INDEV
+	
+		BlackjackGame
+			ADDED
+				// Added Strategy Components boolean canSplit, boolean canDoubleDown, Hand playerSecondHand, boolean playingSecondHand
+				// Added canDoubleDown();
+				// Added canSplit();
+				// Added doubleDown();
+				// Added splitHand();
+				// Added switchToSecondHand();
+				// Added getPlayerSecondHand()
+				// Added isPlayingSecondHand();
+				// Changed playerStay() to include if-else for second hand
 
-ADDED
-
-// Added Font BlackAdder;
-// Added BlackjackGame game; 
-// Added JButton HitButton; 
-// Added  JButton StayButton; 
-// Added JButton NewGameButton; 
-// Added Code to bring in custom Font
-// Added Font loader
-// Added new BlackjackGame(); 
-// Added Draw background
-// Added  Draw player's hand label 
-// Added Draw dealer's hand label 
-// Added Draw dealer's hand 
-// Added Draw game status
-// Added JButton HitButton
-// Added JButton StayButton
-// Added JButton NewGameButton
-// Added action listeners to HitButton, StayButton, NewGameButton
-// Added updateButtonStates()
-// Added GamePanel.repaint();
-
-REMOVED
-Deck Deck;
-Hand Hand;
-JButton SortButton; 
-JButton ShuffleHandButton;
-JButton ShuffleDeckButton;
-Deck = new Deck(52);
-Hand = new Hand(13);
-JPanel
-JButton SortButton = new JButton("Deal");
-JButton ShuffleHandButton = new JButton("Shuffle Hand");
-JButton ShuffleDeckButton = new JButton("Shuffle Deck");
-GamePanel.setBackground(new Color(53, 101, 77));
-SortButton.setFocusable(false);
-ButtonPanel.add(SortButton);
-ButtonPanel.add(SortButton);
-ButtonPanel.add(ShuffleHandButton);
-ButtonPanel.add(ShuffleHandButton);
-ButtonPanel.add(ShuffleDeckButton);
-SortButton.addActionListener((ActionEvent e) -> {
-System.out.println("sortButton.() needs to be edited");
-dealHand();
-GamePanel.repaint();
-ShuffleHandButton.addActionListener(e -> {shuffle(Hand);});
-Deck.buildDeck();
-shuffle(Deck); // used for debugging
-dealHand();
-shuffle(Hand); // used for debugging
-System.out.println("PLAYER: ");
-System.out.println(Hand);
-public void dealHand() {for (int i = 0; i < 13; i++) {Card card = Deck.dealCard();Hand.addCard(card);GamePanel.repaint();}
-public void shuffle(Deck d) {d.shuffle();GamePanel.repaint();}
-ShuffleDeckButton.addActionListener(e -> {Hand = null; Hand = new Hand(13); shuffle(Deck);dealHand();});
-
-
-CHANGED
-int boardHeight = 700; // Changed 600 -> 700
-int cardHeight = 200; // Changed 220 -> 200
-// Changed new Font("Arial", Font.BOLD, 20 -> BlackAdder.deriveFont(Font.PLAIN, 28f
-for (int i = 0; i < playerHand.last; i++) // Changed for (int i = 0; i < Hand.last; i++)
-Card card = playerHand.getCard(i); // Changed Card card = Hand.getCard(i);
-g.setFont(BlackAdder.deriveFont(Font.PLAIN, 28f)); //Changed new Font("Arial", Font.BOLD, 24 -> BlackAdder.deriveFont(Font.PLAIN, 28f
-g.drawString("Press 'New Game' to Start", 600, 75); // Changed y:250 -> 75
-g.setFont(BlackAdder.deriveFont(Font.PLAIN, 28f)); //Changed new Font("Arial", Font.BOLD, 24 -> BlackAdder.deriveFont(Font.PLAIN, 28f
-g.drawString("Press 'New Game' to Start", 600, 75); // Changed y:250 -> 75
-
-
-BUILD 02 -> BUILD 03
-
-Cleaned up Change Log Entries
-
-BlackjackGame
-ADDED
-// Added Betting Components playerBalance, currentBet, minimumBet
-// Added placeBet(int amount);
-// Added if statement to startNewGame();
-// Added processWinnings(true); to dealerPlay();
-// Added boolean playerWins to determineWinner(); // Added playerWins = true;, playerWins = false;, 
-// Added return bet to player on Push to determineWinner();
-// Added processWinnings(playerWins) 
-// Added processWinnings(boolean playerWins)
-// Added getPlayerBalance();
-// Added getCurrentBet();
-// Added getMinimumBet();
-// Added resetBet();
-
-
-SortCards
-ADDED
-// Added betPanel, betTextField, betButton, balanceLabel 
-// Added visibility to betting information
-// Added JPanel betPanel, JTextField betTextField , JButton betButton, JLabel balanceLabel
-// Added JPanel betPanel, JTextField betTextField , JButton betButton, JLabel balanceLabel
-// Added if-else Statment to NewGameButton ActionListener
-// Added Disable NewGameButton until a bet is placed
-// Added updateBalanceDisplay()
-// Added if-else if-else to updateButtonStates()
-// Added updateButtonStates();
-// Added updateBalanceDisplay();
-
+		SortCards
+			ADDED
+				// Added JButton doubleDownButton and JButton splitButton to UI Components
+				// Added Strategy Initialization
+				// Added Strategy components to button panel
+				// Added Action Listeners to Strategy buttons
+			CHANGED	
+				// Added doubleDownButton and splitButton to updateButtonStates();
